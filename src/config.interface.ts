@@ -1,16 +1,25 @@
 import { Connector, Detector, Inspector, Provider, Subscription, Symbol, TimeFrame } from "@barfinex/types";
 
-// Main configuration interface for the application
+/**
+ * Main configuration interface for the application.
+ * Defines separate configuration sections for advisor, inspector, detector, and provider.
+ */
+/**
+ * Main configuration interface for the application.
+ * Each module has its own sub-configuration.
+ */
 export interface AppConfig {
-    advisor: AdvisorConfig;       // Configuration for the Advisor module
-    inspector: Inspector;   // Configuration for the Inspector module
-    detector: Detector;     // Configuration for the Detector module
-    provider: Provider;     // Configuration for the Provider module
+  advisor?: AdvisorConfig;   // Advisor module configuration
+  inspector?: Inspector;     // Inspector module configuration
+  detector?: Detector;       // Detector module configuration
+  provider?: Provider;       // Provider module configuration
 }
 
-// Advisor configuration placeholder
+/**
+ * Generic Advisor config with flexible structure.
+ */
 export interface AdvisorConfig {
-    [key: string]: unknown;       // Dynamic key-value pair for advisor settings
+  [key: string]: unknown;
 }
 
 // Configuration for the Inspector module

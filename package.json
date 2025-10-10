@@ -2,7 +2,7 @@
   "name": "@barfinex/config",
   "version": "0.0.0-development",
   "private": false,
-  "description": "Shared Config for Barfinex ecosystem",
+  "description": "Configuration management module for the Barfinex ecosystem. Provides typed configuration interfaces, file-based loading, environment variable interpolation, and NestJS service integration.",
   "author": "Barfinex",
   "license": "MIT",
   "homepage": "https://github.com/barfinex/lib-config#readme",
@@ -23,6 +23,19 @@
     "clean": "rimraf dist",
     "release": "semantic-release"
   },
+  "keywords": [
+    "barfinex",
+    "config",
+    "configuration",
+    "nestjs",
+    "nestjs-module",
+    "typescript",
+    "environment",
+    "settings",
+    "app-config",
+    "config-service",
+    "config-management"
+  ],
   "devDependencies": {
     "typescript": "^5.6.0",
     "rimraf": "^5.0.0",
@@ -31,7 +44,9 @@
     "@semantic-release/git": "^10.0.0",
     "@semantic-release/github": "^10.0.0",
     "@semantic-release/commit-analyzer": "^13.0.0",
-    "@semantic-release/release-notes-generator": "^14.0.0"
+    "@semantic-release/release-notes-generator": "^14.0.0",
+    "@types/node": "^20.11.30",
+    "@nestjs/common": "^10.0.0"
   },
   "publishConfig": {
     "access": "public"
