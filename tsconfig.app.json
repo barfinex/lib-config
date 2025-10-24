@@ -1,19 +1,22 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    /* === базовые параметры === */
     "target": "ES2020",
     "module": "CommonJS",
     "declaration": true,
     "emitDeclarationOnly": false,
-    "rootDir": "./src", // исходники только этой библиотеки
-    "outDir": "../../dist/libs/config", // 📦 общий dist
-    "declarationDir": "../../dist/libs/config", // 📄 декларации рядом с js
-    "tsBuildInfoFile": "../../dist/libs/config.tsbuildinfo", // ✅ уникальный build cache
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "declarationDir": "./dist",
+    "tsBuildInfoFile": "./dist.tsbuildinfo",
+    "composite": true,
+    /* === строгая типизация и стабильность === */
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "composite": true, // ✅ участвует в project references
+    /* === алиасы === */
     "baseUrl": "../../",
     "paths": {
       "@barfinex/types": [
@@ -36,12 +39,4 @@
     "**/*.spec.ts",
     "**/*.test.ts"
   ],
-  "references": [
-    {
-      "path": "../types"
-    },
-    {
-      "path": "../utils"
-    }
-  ]
 }
