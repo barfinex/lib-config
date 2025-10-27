@@ -4,14 +4,17 @@
     /* === базовые параметры === */
     "target": "ES2020",
     "module": "CommonJS",
+    /* === генерация === */
     "declaration": true,
     "emitDeclarationOnly": false,
-    "rootDir": "./src",
+    /* === структура === */
+    "rootDir": "src",
     "outDir": "./dist",
     "declarationDir": "./dist",
-    "tsBuildInfoFile": "./dist.tsbuildinfo",
+    "tsBuildInfoFile": "../../dist/libs/config.tsbuildinfo",
+    /* === проектная сборка === */
     "composite": true,
-    /* === строгая типизация и стабильность === */
+    /* === строгость и совместимость === */
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -39,4 +42,12 @@
     "**/*.spec.ts",
     "**/*.test.ts"
   ],
+  "references": [
+    {
+      "path": "../types"
+    },
+    {
+      "path": "../utils"
+    }
+  ]
 }

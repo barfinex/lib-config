@@ -15,6 +15,7 @@ export interface AppConfig {
   provider?: Provider;       // Provider module configuration
 }
 
+
 /**
  * Generic Advisor config with flexible structure.
  */
