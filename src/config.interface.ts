@@ -16,6 +16,7 @@ export interface AppConfig {
 }
 
 
+
 /**
  * Generic Advisor config with flexible structure.
  */
