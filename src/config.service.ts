@@ -8,7 +8,8 @@ export class ConfigService {
   private config: AppConfig;
 
   constructor() {
-    const configFilePath = process.env.CONFIG_FILE || './config.json';
+    // const configFilePath = process.env.CONFIG_FILE || './config.json';
+    const configFilePath = process.env.CONFIG_FILE || path.resolve(process.cwd(), 'config', 'config.json');
 
     // Load and parse the main configuration file
     const rawConfig = JSON.parse(fs.readFileSync(configFilePath, 'utf-8')) as AppConfig;
