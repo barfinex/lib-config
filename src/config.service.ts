@@ -8,10 +8,21 @@ export class ConfigService {
   private config: AppConfig;
 
   constructor() {
-    // const configFilePath = process.env.CONFIG_FILE || './config.json';
-    const configFilePath = process.env.CONFIG_FILE || path.resolve(process.cwd(), 'config', 'config.json');
+    // === Определяем путь к основному конфигурационному файлу ===
+    const rawPath = process.env.CONFIG_FILE;
+    const configFilePath = rawPath
+      ? path.isAbsolute(rawPath)
+        ? rawPath
+        : path.resolve(process.cwd(), rawPath)
+      : path.resolve(process.cwd(), 'config', 'config.json');
 
-    // Load and parse the main configuration file
+    console.log('🧩 Config path resolved to:', configFilePath);
+
+    if (!fs.existsSync(configFilePath)) {
+      throw new Error(`Main configuration file not found: ${configFilePath}`);
+    }
+
+    // === Загружаем и парсим основной конфиг ===
     const rawConfig = JSON.parse(fs.readFileSync(configFilePath, 'utf-8')) as AppConfig;
 
     if (!rawConfig || typeof rawConfig !== 'object') {
@@ -19,12 +30,15 @@ export class ConfigService {
     }
 
     this.config = {} as AppConfig;
+    const baseDir = path.dirname(configFilePath);
 
-    // Iterate through keys and load external files if necessary
+    // === Обрабатываем поля, включая file: ссылки ===
     (Object.keys(rawConfig) as Array<keyof AppConfig>).forEach((key) => {
-      const rawValue = rawConfig[key];
-      if (typeof rawValue === "string") {
-        const filePath = this.resolveFilePath(rawValue);
+      const rawValue = rawConfig[key] as any;
+      if (typeof rawValue === 'string' && rawValue.startsWith('file:')) {
+        const relativePath = rawValue.replace(/^file:/, '');
+        const filePath = path.resolve(baseDir, relativePath);
+        console.log(`📄 Loading nested config for "${key}": ${filePath}`);
         this.validateFilePath(filePath);
         this.config[key] = this.loadFileContent(filePath) as any;
       } else {
@@ -32,8 +46,10 @@ export class ConfigService {
       }
     });
 
-    // Replace environment variable placeholders
+    // === Подставляем переменные окружения ===
     this.config = this.interpolateEnvVariables(this.config);
+
+    console.log('✅ Configuration successfully loaded.');
   }
 
   /**
@@ -74,7 +90,7 @@ export class ConfigService {
    */
   private resolveFilePath(filePath: string): string {
     if (filePath.startsWith('file:')) {
-      return path.resolve(filePath.replace('file:', ''));
+      return path.resolve(filePath.replace(/^file:/, ''));
     }
     return path.resolve(filePath);
   }
