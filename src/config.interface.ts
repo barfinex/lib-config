@@ -199,7 +199,7 @@ export interface AdvisorConfig {
 
 // // Configuration for provider settings
 // export interface ProviderConfig {
-//   restApiToken: string;                         // API token for provider authentication
+//   apiToken: string;                             // API token for provider authentication
 //   connectors: Connector[];          // List of provider connectors
 // }
 
