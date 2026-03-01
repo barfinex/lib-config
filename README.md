@@ -1,21 +1,23 @@
 # @barfinex/config
 
-**`@barfinex/config`** is the **centralized configuration and environment management layer** of the [Barfinex](https://barfinex.com) ecosystem — an open-source platform for algorithmic trading, quantitative research, and digital asset infrastructure.
+**Centralized configuration and environment management** for the [Barfinex](https://barfinex.com) ecosystem — the open platform for algorithmic trading where data, signals, and decisions flow in one controllable system.
 
-This package provides a unified way to **define, load, and validate configuration options** across all Barfinex services and libraries. It ensures that every microservice (detectors, advisors, connectors, etc.) works with a consistent and validated configuration source.
-
----
-
-It helps to:
-- provide **consistent environment variables and configuration models**;
-- reduce duplication of config handling logic across services;
-- improve reliability by validating required settings before service startup.
+This library provides a **unified, type-safe way** to load and validate configuration across Barfinex services (Provider, Detector, connectors, and apps). One source of truth for env vars and settings means fewer surprises in production and faster onboarding.
 
 ---
 
-## 📦 Installation
+## What it does
 
-To install the package, use npm or yarn:
+- **Typed configuration** — `ConfigInterface` and `ConfigService` for consistent contracts across services.
+- **Environment & files** — load from environment variables and optional config files with validation.
+- **NestJS integration** — `ConfigModule` plugs into your Nest app so any service can inject config.
+- **Startup safety** — validate required keys before the app starts; fail fast with clear errors.
+
+Use it in Provider, Detector, or any Barfinex microservice so they all speak the same configuration language.
+
+---
+
+## Installation
 
 ```sh
 npm install @barfinex/config
@@ -29,39 +31,32 @@ yarn add @barfinex/config
 
 ---
 
-## 📚 What's Included
+## What's included
 
-The `@barfinex/config` package provides:
-
-- **Interfaces** — type-safe configuration contracts (`ConfigInterface`).
-- **ConfigService** — centralized service for managing environment variables and defaults.
-- **ConfigModule** — NestJS module for easy integration with microservices.
-- **Validation Layer** — ensures all required configuration keys are present and valid.
-
----
-
-## 🤝 Contributing
-
-We welcome contributions to help grow the **open Barfinex standard**:
-
-- 🛠 Open an issue or submit a PR
-- 💡 Propose new configuration features or improvements
-- 💬 Share feedback or use cases
-
-Join the conversation in our Telegram community: [t.me/barfinex](https://t.me/barfinex)
+| Export | Purpose |
+|--------|--------|
+| `ConfigModule` | NestJS module for DI and config loading. |
+| `ConfigService` | Service to read and validate env/config values. |
+| `ConfigInterface` | TypeScript interfaces for configuration contracts. |
 
 ---
 
-## 📜 License
+## Documentation
 
-This repository is licensed under the [Apache License 2.0](LICENSE) with additional restrictions.
+- **Barfinex overview** — [First Steps](https://barfinex.com/docs/first-steps), [Architecture](https://barfinex.com/docs/architecture), [Glossary](https://barfinex.com/docs/glossary).
+- **Provider & deployment** — [Installation provider](https://barfinex.com/docs/installation-provider), [Docker Compose for Provider](https://barfinex.com/docs/installation-provider-docker-compose), [Understanding Provider Logs](https://barfinex.com/docs/installation-provider-logs).
+- **Detector** — [Installation detector](https://barfinex.com/docs/installation-detector).
+- **Studio** — [Terminal Configuration](https://barfinex.com/docs/configuration-studio), [Registering Provider in Studio](https://barfinex.com/docs/configuration-studio-provider).
+- **APIs & troubleshooting** — [Building with the API](https://barfinex.com/docs/frontend-api), [Provider API reference](https://barfinex.com/docs/provider-api), [Typical problems and solutions](https://barfinex.com/docs/troubleshooting).
 
-### Key Terms:
-1. **Attribution**: Proper credit must be given to the original author, Barfin Network Limited, with a link to the official website: [https://barfinex.com/](https://barfinex.com/).
-2. **Non-Commercial Use**: The use of this codebase for commercial purposes is prohibited without explicit written permission.
-3. **Display Requirements**: For non-commercial use, the following must be displayed:
-   - The name "Barfin Network Limited".
-   - The official logo.
-   - A working link to [https://barfinex.com/](https://barfinex.com/).
+---
 
-For further details or to request commercial use permissions, contact **Barfin Network Limited** through the official website.
+## Contributing
+
+Ideas and PRs are welcome: open an [issue](https://github.com/barfinex/lib-config/issues) or submit a pull request. Join the community: [Telegram](https://t.me/barfinex) · [GitHub](https://github.com/barfinex).
+
+---
+
+## License
+
+Licensed under the [Apache License 2.0](LICENSE) with additional terms. Attribution to **Barfin Network Limited** and a link to [https://barfinex.com](https://barfinex.com) are required. Commercial use requires explicit permission. See [LICENSE](LICENSE) and the [Barfinex site](https://barfinex.com) for details.
