@@ -1,4 +1,4 @@
-import { Detector, Inspector, Provider } from "@barfinex/types";
+import { Detector, Inspector, Provider } from '@barfinex/types';
 
 /**
  * Main configuration interface for the application.
@@ -9,13 +9,11 @@ import { Detector, Inspector, Provider } from "@barfinex/types";
  * Each module has its own sub-configuration.
  */
 export interface AppConfig {
-  advisor?: AdvisorConfig;   // Advisor module configuration
-  inspector?: Inspector;     // Inspector module configuration
-  detector?: Detector;       // Detector module configuration
-  provider?: Provider;       // Provider module configuration
+  advisor?: AdvisorConfig; // Advisor module configuration
+  inspector?: Inspector; // Inspector module configuration
+  detector?: Detector; // Detector module configuration
+  provider?: Provider; // Provider module configuration
 }
-
-
 
 /**
  * Generic Advisor config with flexible structure.
@@ -32,8 +30,6 @@ export interface AdvisorConfig {
 //   tradeSettings: InspectorTradeSettingsConfig;     // Trade-related settings
 //   strategyLogic: InspectorStrategyLogicConfig;     // Strategy logic configuration
 // }
-
-
 
 // Risk management settings for the Inspector
 // export interface InspectorRiskManagementConfig {
@@ -76,12 +72,6 @@ export interface AdvisorConfig {
 // //   maxROIThreshold: number;                  // Maximum ROI threshold
 // // }
 
-
-
-
-
-
-
 // // Telegram notification settings for the detector
 // export interface DetectorTelegramNotifications {
 //   botToken: string;              // Token for the Telegram bot used for sending notifications
@@ -110,8 +100,6 @@ export interface AdvisorConfig {
 //   leverage: number;              // Leverage to apply for trades
 //   quantity: number;              // Quantity to trade
 // }
-
-
 
 // // Parameters for indicators used in the detector
 // export interface DetectorIndicatorParameters {
@@ -191,15 +179,8 @@ export interface AdvisorConfig {
 //   plugins: DetectorPlugin[];       // List of plugins and their configurations
 // }
 
-
-
-
-
-
-
 // // Configuration for provider settings
 // export interface ProviderConfig {
 //   apiToken: string;                             // API token for provider authentication
 //   connectors: Connector[];          // List of provider connectors
 // }
-

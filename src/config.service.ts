@@ -23,7 +23,9 @@ export class ConfigService {
     }
 
     // === Загружаем и парсим основной конфиг ===
-    const rawConfig = JSON.parse(fs.readFileSync(configFilePath, 'utf-8')) as AppConfig;
+    const rawConfig = JSON.parse(
+      fs.readFileSync(configFilePath, 'utf-8'),
+    ) as AppConfig;
 
     if (!rawConfig || typeof rawConfig !== 'object') {
       throw new Error('Invalid or empty configuration file.');
@@ -118,7 +120,9 @@ export class ConfigService {
       return JSON.parse(fileContent);
     } catch (error) {
       throw new Error(
-        `Error parsing JSON from file: ${filePath}. ${(error as Error).message}`,
+        `Error parsing JSON from file: ${filePath}. ${
+          (error as Error).message
+        }`,
       );
     }
   }
